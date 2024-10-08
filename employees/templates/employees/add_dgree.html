@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block add %}
+  <a class="border border-primary p-2 rounded-circle" href="{% url 'employees:dgree_list' %}">
+    <span class="smf sf-4"><i class="fa-solid fa-list"></i></span>
+  </a>
+{% endblock %}
+{% block content %}
+<div class="">
+    <div class="mt-2">
+    <div class="px-4 mt-4">
+      <p class="fw-bold text-danger fs-6 border-bottom">
+        الرجاء ملء البيانات     .... ?
+      </p>
+    </div>
+    <form class=" px-3 py-3" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-5  mb-1" id="name">
+          {{ form.name|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5  mb-1" id="section">
+          {{ form.section|as_crispy_field }}
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5  mb-1" id="bonus">
+          {{ form.bonus|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5  mb-1" id="base_salary">
+          {{ form.base_salary|as_crispy_field }}
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5  mb-1" id="begin_date">
+          {{ form.begin_date|as_crispy_field }}
+        </div>
+        <div class="row">
+          <div class="col-5  mb-1" id="monthly_add">
+            {{ form.monthly_add|as_crispy_field }}
+          </div>
+          <div class="col-2">
+          </div>
+          <div class="row">
+            <div class="col-5  mb-1" id="yearly_add">
+              {{ form.yearly_add|as_crispy_field }}
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-5  mb-1" id="emp_type">
+              {{ form.emp_type|as_crispy_field }}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <hr>
+      <div class="">
+        <button class="btn  btn-save mb-4 smf d-inline-flex align-items-center" type="submit">
+          {{ action }}
+          <span class="px-3"><i class="fa-solid fa-floppy-disk"></i></span>
+        </button>
+      </div>
+      <br><br>
+
+    </form>
+</div>
+</div>
+{% endblock %}

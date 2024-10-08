@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block add %}
+  <a class="border border-primary p-2 rounded-circle" href="{% url 'departments:department_list' %}">
+    <span class="smf sf-4"><i class="fa-solid fa-list"></i></span>
+  </a>
+{% endblock %}
+{% block content %}
+<div class="">
+    <div class="mt-2">
+    <div class="d-flex px-4 mt-4">
+      <div class="flex-grow-1">
+        <p class="fw-bold text-danger fs-6 border-bottom">
+          الرجاء ملء البيانات     .... ?
+        </p>
+      </div>
+      <div class="">
+        <a href="{% url 'employees:employee_list' %}" class="fw-bold text-secondary fs-6">قائمة الموظفين
+          <span class="px-3"><i class="fa-solid fa-user-group"></i></span>
+        </a>
+      </div>
+    </div>
+    <form class=" px-3 py-3" method="post"  enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-5  mb-1" id="idn">
+          {{ form.idn|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5  mb-1" id="name">
+          {{ form.name|as_crispy_field }}
+        </div>
+        <div class="col-2">  </div>
+        <div class="col-5  mb-1" id="national_no">
+          {{ form.national_no|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5  mb-1" id="birth_date">
+          {{ form.birth_date|as_crispy_field }}
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5  mb-1" id="image">
+          {{ form.image|as_crispy_field }}
+        </div>
+      </div>
+      <br />
+      <!-- accordion -->
+      <nav class="mt-4">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link rounded me-4 active bg-success bg-opacity-25 border-2" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+            <span class="text-primary fw-bold">
+             العنوان
+            </span>
+          </button>
+          <button class="nav-link rounded me-4 bg-success bg-opacity-25  border-2" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+            <span class="text-primary fw-bold bg-opacity-50">
+            الحالة الإجتماعية
+            </span>
+          </button>
+          <button class="nav-link rounded bg-success bg-opacity-25 rounded ms-2  border-2" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+              <span class="text-primary fw-bold bg-opacity-50">
+             بيانات العمل
+            </span>
+          </button>
+          <button class="nav-link rounded bg-success bg-opacity-25 rounded ms-2  border-2" id="nav-attach-tab" data-bs-toggle="tab" data-bs-target="#nav-attach" type="button" role="tab" aria-controls="nav-attach" aria-selected="false">
+              <span class="text-primary fw-bold bg-opacity-50">
+             المرفقات
+            </span>
+          </button>
+          <!-- <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" >الوجهة</button> -->
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+          <div class="row mt-4">
+            <div class="col-5  mb-1" id="state">
+              {{ form.state|as_crispy_field }}
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5  mb-1" id="locality">
+              {{ form.locality|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5  mb-1" id="unity">
+              {{ form.unity|as_crispy_field }}
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5  mb-1" id="city">
+              {{ form.city|as_crispy_field }}
+            </div>
+          </div>
+          <div class="col-5  mb-1" id="address">
+            {{ form.address|as_crispy_field }}
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+        <div class="row mt-4">
+          <div class="col-5  mb-1" id="maritial_status">
+            {{ form.maritial_status|as_crispy_field }}
+          </div>
+          <div class="col-2"></div>
+          <div class="col-5  mb-1" id="wives_no">
+            {{ form.wives_no|as_crispy_field }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-5  mb-1" id="sons_no">
+            {{ form.sons_no|as_crispy_field }}
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-5  mb-1" id="education">
+            {{ form.education|as_crispy_field }}
+          </div>
+          <div class="col-2"></div>
+          <div class="col-5  mb-1" id="employee_type">
+            {{ form.employee_type|as_crispy_field }}
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+        <div class="row mt-4">
+          <div class="row">
+            <div class="col-5  mb-1" id="hquarter">
+              {{ form.hquarter|as_crispy_field }}
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5  mb-1" id="sector">
+              {{ form.sector|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5  mb-1" id="office">
+              {{ form.office|as_crispy_field }}
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5  mb-1" id="dgree">
+              {{ form.dgree|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade" id="nav-attach" role="tabpanel" aria-labelledby="nav-attach-tab" tabindex="0">
+        <div class="row mt-4">
+          <div class="col-5  mb-1" id="documents">
+            {{ form.documents|as_crispy_field }}
+          </div>
+        </div>
+      </div>
+      </div>
+      <hr>
+      <div class="">
+        <button class="btn  btn-save mb-4 smf d-inline-flex align-items-center" type="submit">
+          {{ action }}
+          <span class="px-3"><i class="fa-solid fa-floppy-disk"></i></span>
+        </button>
+      </div>
+      <br><br>
+    </form>
+</div>
+</div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+  $("#id_state").change(function(){
+    var stateId = $(this).val();
+    $.ajax({
+      url: '{% url 'locations:load_localities' %}',
+      data: {
+        'state' : stateId
+      },
+      success: function(data){
+        $("#id_locality").html(data)
+      }
+    });
+  });
+
+  $("#id_locality").change(function(){
+    var localityId = $(this).val();
+    $.ajax({
+      url: '{% url 'locations:load_unities' %}',
+      data: {
+        'locality' : localityId
+      },
+      success: function(data){
+        $("#id_unity").html(data)
+      }
+    });
+  });
+
+
+  $("#id_unity").change(function(){
+    var unityId = $(this).val();
+    $.ajax({
+      url: '{% url 'locations:load_cities' %}',
+      data: {
+        'unity' : unityId
+      },
+      success: function(data){
+        $("#id_city").html(data)
+      }
+    });
+  });
+<!-- current locality -->
+</script>
+<script type="text/javascript">
+  $("#id_hquarter").change(function(){
+    var hquarterId = $(this).val();
+    $.ajax({
+      url: '{% url 'offices:load_sectors' %}',
+      data: {
+        'hquarter' : hquarterId
+      },
+      success: function(data){
+        $("#id_sector").html(data)
+      }
+    });
+  });
+
+  $("#id_sector").change(function(){
+    var sectorId = $(this).val();
+    $.ajax({
+      url: '{% url 'offices:load_offices' %}',
+      data: {
+        'sector' : sectorId
+      },
+      success: function(data){
+        $("#id_office").html(data)
+      }
+    });
+  });
+</script>
+
+{% endblock %}

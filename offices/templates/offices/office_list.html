@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content  %}
+<div class="">
+  <div class="d-flex border-bottom">
+    <div class="p-2 flex-grow-1">
+      <span class="px-2 fs-4 text-secondary">
+        <i class="fa-solid fa-house-laptop"></i>
+      </span>
+      <span class="px-2 fw-bold tth">
+        {{ title }}  /
+      </span>
+      <span class="fw-bold tth">
+        {{ header }} /
+      </span>
+      <span></span>
+    </div>
+    <div class="p-2">
+      <span>
+        <a class="text-end fw-bold tth" href="{% url 'offices:add_office' %}">
+          إضافة مكتب جديد
+          <span class="px-3 fs-4"><i class="fa fa-file-circle-plus"></i></span>
+        </a>
+      </span>
+    </div>
+  </div>
+  <div class="mt-2">
+    <br />
+      {% if offices %}
+      <form  class="mt-4 method="get" action="{% url 'offices:search_office' %}">
+        <div class="row">
+          <div class="col-6">
+            <input class="form-control border-warning col-6 smf py-1" type="text" name="q" placeholder="أدخل المكتب للبحث" />
+          </div>
+          <div class="col-2">
+            <button type="submit" class="btn btn-warning px-2 col-6 smf py-1">
+                <span class="text-primary smf sf-2"><i class="fa-solid fa-search"></i></span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+        <div class="mt-4">
+
+          <table class="table">
+            <thead>
+              <tr class="text-center table-success bg-opacity-10">
+                <th>#</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+          {% for ofc in offices %}
+            <tr class="text-center fnt">
+              <td><span class="smf text-secondary">{{ ofc.id }}</span></td>
+              <td><span class="smf text-secondary">{{ ofc.name }}</span></td>
+              <td class="border-end border-start">
+                <a class="text-success" href="{% url 'offices:update_office' ofc.id %}">
+                  <span class="smf sf-4"><i class="fa-solid fa-pencil"></i></span>
+                </a>
+              </td>
+
+              <td class="border-end">
+                <a class=" text-danger" href="{% url 'offices:delete_office' ofc.id %}">
+                  <span class="smf fs-6"><i class="fa-solid fa-text-slash"></i></span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <br />
+      {% if is_paginated %}
+          {% include 'snippets/paginate.html' %}
+      {% endif %}
+  </div>
+</div>
+</div>
+{% endif %}
+{% endblock %}

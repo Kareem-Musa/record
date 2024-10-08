@@ -1,0 +1,58 @@
+<style scoped>
+.dropdown-toggle:after {
+ display: none;
+}
+</style>
+<a class="btn btn-secondary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+  <span class="px-2"><i class="fa-solid fa-right-left"></i></span>
+</a>
+<!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  Button with data-bs-target
+</button> -->
+<br /><br />
+<div class="offcanvas offcanvas-start site-nav1" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header bg-secondary">
+    <br>
+    <div class="mt-1 p-3 text-primary">
+      <h6 class="offcanvas-title" id="offcanvasExampleLabel">
+        <span class="mt-4 fw-bold text-white fs-5">
+        القائمة الرئيسية
+        </span>
+      </h6>
+    </div>
+    <hr>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="dropdown mt-3 col-6 border-bottom">
+      <button class="btn dropdown-toggle fw-bold text-white" type="button" data-bs-toggle="dropdown">
+        الإعدادات
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item smf" href="{% url 'locations:main_locations' %}">العنواين</a></li>
+        <li><a class="dropdown-item smf" href="{% url 'departments:department_list' %}">الأقسام</a></li>
+      </ul>
+    </div>
+    <div class="dropdown mt-3 col-6 border-bottom">
+      <button class="btn dropdown-toggle fw-bold text-white" type="button" data-bs-toggle="dropdown">
+        العمليات
+      </button>
+      <ul class="dropdown-menu border-bottom">
+        <li><a class="dropdown-item" href="{% url 'employees:employee_list' %}">الموظفين</a></li>
+        <li><a class="dropdown-item" href="{% url 'employees:document_list' %}">المرفقات</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+    <div class="dropdown mt-3 col-6 border-bottom">
+      <button class="btn dropdown-toggle  fw-bold text-white" type="button" data-bs-toggle="dropdown">
+        التقارير
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

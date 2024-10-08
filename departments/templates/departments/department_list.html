@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content  %}
+
+<div class="d-flex mt-2 px-4  border-bottom">
+  <div class="p-2 flex-grow-1">
+    <span class="px-2 fs-4 text-secondary">
+      <i class="fa-solid fa-house-laptop"></i>
+    </span>
+    <span class="px-2  tth">
+      {{ title }}  /
+    </span>
+    <span class=" tth">
+      {{ header }} /
+    </span>
+    <span></span>
+  </div>
+  <div class="p-2">
+    <span>
+      <a class="text-end tth" href="{% url 'departments:add_department' %}">
+        إضافة قطاع إدارة
+        <span class="px-3 fs-6"><i class="fa-solid fa-plus"></i></span>
+      </a>
+    </span>
+  </div>
+</div>
+    <br />
+      {% if departments %}
+        <div class="mt-4 px-4">
+
+          <table class="table">
+            <thead>
+              <tr class="text-center table-secondary bg-opacity-10">
+                <th>#</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+          {% for r in departments %}
+            <tr class="text-center ">
+              <td><span class=" text-secondary">{{ r.id }}</span></td>
+              <td><span class=" text-secondary">{{ r.name }}</span></td>
+              <td class="border-start">
+                <a class=" text-secondary" href="{% url 'departments:update_department' r.id %}">
+                  <span class="fs-6"><i class="fa-solid fa-file-pen"></i></span>
+                </a>
+              </td>
+              <td class="border-start">
+                <a class=" text-danger" href="{% url 'departments:delete_department' r.id %}">
+                  <span class="fs-6"><i class="fa-solid fa-text-slash"></i></span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if is_paginated %}
+          {% include 'snippets/paginate.html' %}
+      {% endif %}
+  </div>
+      </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,57 @@
+.menu-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  width: 12em;
+  height: 100vh;
+  overflow: auto;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html *,
+html *::after,
+html *::before {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: tahoma;
+  line-height: 1.6;
+  color: #404040;
+  margin: 0;
+  background: #fff;
+}
+
+.menu-wrapper {
+  padding: 1em;
+  background: #56727C;
+}
+
+.menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menu-title {
+  color: #D9E9EF;
+  margin: 0;
+}
+
+.menu__link {
+  display: block;
+  font-size: .8em;
+  padding: .5em .7em;
+  margin: .4em 0;
+  color: #D9E9EF;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.menu__link:hover,
+.is-selected .menu__link {
+  background: #415F69;
+}

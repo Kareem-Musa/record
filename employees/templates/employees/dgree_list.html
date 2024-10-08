@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block add %}
+  <a class="border border-primary p-2 rounded-circle" href="{% url 'employees:add_dgree' %}">
+    <span class="smf sf-4"><i class="fa-solid fa-plus"></i></span>
+  </a>
+{% endblock %}
+{% block content  %}
+
+<form class="mt-2 form-inline" method="get">
+  <input class="form-control smf py-1" type="text" name="" value="" />
+  <button type="button" class="btn">
+      <span class="text-primary smf sf-2"><i class="fa-solid fa-search"></i></span>
+  </button>
+</form>
+
+      {% if dgrees %}
+
+        <div class="mt-4">
+
+          <table class="table">
+            <thead>
+              <tr class="text-center table-secondary bg-opacity-10">
+                <th>#</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+          {% for dg in dgrees %}
+            <tr class="text-center fnt">
+              <td><span class="smf text-secondary">{{ dg.id }}</span></td>
+              <td><span class="smf text-secondary">{{ dg.name }}</span></td>
+              <td class="smf text-secondary">
+                <a class="" href="{% url 'employees:update_dgree' dg.id %}">
+                  <span class="smf sf-4"><i class="fa-solid fa-pencil"></i></span>
+                </a>
+              </td>
+              <td class="">
+                <a class="smf text-danger" href="{% url 'employees:delete_dgree' dg.id %}">
+                   <span class="smf fs-6"><i class="fa-solid fa-text-slash"></i></span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if is_paginated %}
+          {% include 'snippets/paginate.html' %}
+      {% endif %}
+  </div>
+      </div>
+{% endif %}
+{% endblock %}

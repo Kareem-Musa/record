@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="mt-4">
+    <br /><br><br><br><br />
+    {% if registered %}
+     <strong>thank you for registering!</strong>
+      <a href="{% url 'profiles:profile' %}">Return to the homepage.</a><br />
+      {% else %}
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="col-9 mt-4 mb-3" id="username">
+        {{ form.username|as_crispy_field }}
+      </div>
+      <div class="col-9 mt-4 mb-3" id="email">
+        {{ form.email|as_crispy_field }}
+      </div>
+      <div class="col-9 mt-4 mb-3" id="password">
+        {{ form.password|as_crispy_field }}
+      </div>
+
+      <br />
+
+      <button class="btn btn-register mb-4  d-inline-flex align-items-center" type="submit">
+        تسجيل
+        <span class="px-3"><i class="fa-solid fa-registered"></i></span>
+      </button>
+    </form>
+  </div>
+    {% endif %}
+{% endblock %}

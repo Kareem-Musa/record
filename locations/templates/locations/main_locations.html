@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block add %}
+  <a class="border border-primary p-2 rounded-circle" href="{% url 'departments:department_list' %}">
+    <span class="smf sf-4"><i class="fa-solid fa-list"></i></span>
+  </a>
+{% endblock %}
+{% block content %}
+<br><br><br>
+  <div class="container mt-4 brder">
+    <div class="mt-4 col-6">
+      <a class="d-flex bg-secondary rounded text-white p-3" href="{% url 'locations:state_list' %}">
+        <span class="flex-grow-1">الولايات</span>
+        <span><i class="fa-solid fa-arrow-left"></i></span>
+      </a>
+    </div>
+    <div class="mt-4 col-6">
+      <a class="d-flex bg-secondary rounded text-white p-3" href="{% url 'locations:locality_list' %}">
+        <span class="flex-grow-1">المحليات</span>
+        <span><i class="fa-solid fa-arrow-left"></i></span>
+      </a>
+    </div>
+    <div class="mt-4 col-6">
+      <a class="d-flex bg-secondary rounded text-white p-3" href="{% url 'locations:unity_list' %}">
+        <span class="flex-grow-1">الوحدات الأدارية</span>
+        <span><i class="fa-solid fa-arrow-left"></i></span>
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

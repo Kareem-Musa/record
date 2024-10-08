@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class=" mt-2 ">
+  <div class="d-flex mt-2  border-bottom">
+    <div class="p-2 flex-grow-1">
+      <span class="px-2 fs-4 text-secondary">
+        <i class="bi bi-houses"></i>
+      </span>
+      <span class="px-2  tth">
+        {{ title }}  /
+      </span>
+      <span class=" tth">
+        {{ header }} /
+      </span>
+      <span></span>
+    </div>
+    <div class="p-2">
+      <span>
+        <a class="text-end tth" href="{% url 'employees:range_list' %}">
+          Go to List
+          <span class="px-3 fs-4"><i class="bi bi-card-checklist"></i></span>
+        </a>
+      </span>
+    </div>
+  </div>
+    <div class="mt-4">
+      <br />
+    <span class="text-danger ser text-danger fs-6 "><span class="smf">هل تريد حذف </span>  - {{ range }}</span>
+    <form class=" px-3 mt-2 py-3 col-6" method="post">
+      {% csrf_token %}
+
+      <hr /><br />
+      <div class="d-flex">
+      <div class="flex-grow-1">
+      <button class="btn btn-outline-danger btn-sm fnt" type="submit">
+        {{ action }}
+        <span class="px-2"><i class="bi bi-trash3-fill"></i></span>
+      </button>
+      </div>
+      <div class="">
+        <a class="btn btn-outline-secondary btn-sm fnt" href="{% url 'employees:range_list' %}">
+          Go Back
+          <span class="px-3"><i class="bi bi-arrow-repeat"></i></span>
+        </a>
+      </div>
+    </form>
+</div>
+</div>
+{% endblock %}

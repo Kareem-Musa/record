@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class=" mt-4 ">
+  <div class="d-flex mt-2  border-bottom">
+    <div class="p-2 flex-grow-1">
+      <span class="px-2 text-secondary">
+        <i class="fa-solid fa-house"></i>
+      </span>
+      <span class="px-2 text-secondary fw-bold tth">
+        {{ title }}  /
+      </span>
+      <span class="text-secondary fw-bold tth">
+        {{ header }}
+      </span>
+
+    </div>
+    <div class="p-2">
+      <span>
+        <a class="text-end" href="{% url 'offices:sector_list' %}">
+          Go to List
+          <span class="px-3 fs-6"><i class="fa-solid fa-list"></i></span>
+        </a>
+      </span>
+    </div>
+  </div>
+    <div class="mt-4 bg-danger bg-opacity-10">
+      <br />
+    <span class="text-danger px-3 mfnt">هل تريد حذف قطاع -- {{ sector }}</span>
+    <form class=" px-3 mt-2 py-3 col-6" method="post">
+      {% csrf_token %}
+
+      <hr /><br />
+      <div class="d-flex">
+      <div class="flex-grow-1 mb-3">
+      <button class="btn btn-danger btn-sm smf px-3 rounded-pill" type="submit">
+        {{ action }}
+        <span class="px-2"><i class="fa-regular fa-trash-can"></i></span>
+      </button>
+      </div>
+      <div class="mb-3">
+        <a class="btn btn-secondary btn-sm smf px-3 rounded-pill" href="{% url 'offices:sector_list' %}">
+          Go Back
+          <span class="px-3"><i class="fa-solid fa-arrow-rotate-left"></i></span>
+        </a>
+      </div>
+    </form>
+</div>
+</div>
+{% endblock %}

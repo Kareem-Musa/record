@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class=" mt-2 ">
+  <div class="d-flex mt-2  border-bottom">
+    <div class="p-2 flex-grow-1">
+      <span class="px-2 fs-4 text-secondary">
+        <i class="bi bi-houses"></i>
+      </span>
+      <span class="px-2  tth">
+        {{ title }}  /
+      </span>
+      <span class=" tth">
+        {{ header }} /
+      </span>
+      <span></span>
+    </div>
+    <div class="p-2">
+      <span>
+        <a class="text-end tth" href="{% url 'employees:bonus_list' %}">
+          Go to List
+          <span class="px-3 fs-4"><i class="bi bi-card-checklist"></i></span>
+        </a>
+      </span>
+    </div>
+  </div>
+  <br /><br />
+    <div class="mt-4 border">
+      <br />
+    <span class="text-danger px-5 ser text-danger fs-6 "><span class="smf fw-bold">هل تريد حذف   - {{ bonus }}</span>
+    <form class=" px-5 mt-2 py-3 col-7" method="post">
+      {% csrf_token %}
+
+      <hr /><br />
+      <div class="d-flex">
+      <div class="flex-grow-1">
+      <button class="btn btn-remove btn-sm smf" type="submit">
+        {{ action }}
+        <span class="px-3"><i class="fa-solid fa-xmark"></i></span>
+      </button>
+      </div>
+      <div class="">
+        <a class="btn btn-back btn-sm smf" href="{% url 'employees:bonus_list' %}">
+          Go Back
+          <span class="px-3"><i class="fa-solid fa-arrow-rotate-left"></i></span>
+        </a>
+      </div>
+    </form>
+</div>
+</div>
+{% endblock %}

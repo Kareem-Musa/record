@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="d-flex mt-2  border-bottom">
+      <div class="p-2 flex-grow-1">
+        <span class="px-2 fs-6 text-secondary">
+        <i class="fa-solid fa-house-laptop"></i>
+        </span>
+        <span class="px-2 fw-bold tth">
+          {{ title }}  /
+        </span>
+        <span class="fw-bold tth">
+          {{ header }}
+        </span>
+        <span></span>
+      </div>
+      <div class="p-2">
+        <span>
+          <a class="text-end fw-bold tth" href="{% url 'offices:office_list' %}">
+            القائمة الرئيسية
+            <span class="px-3 fs-6"><i class="fa-brands fa-elementor"></i></span>
+          </a>
+        </span>
+      </div>
+    </div>
+    <div class="mt-2">
+        <div class="px-4 mt-4">
+          <p class="fw-bold text-danger py-2 fs-6 border-bottom">
+            الرجاء ملء البيانات     .... ?
+          </p>
+        </div>
+    <form class="mt-4" method="POST">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-5 mt-2 mb-2" id="state">
+          <p class=" text-white bg-primary cb bg-opacity-50  py-1 rounded-pill border-white tsmf px-2 mb-2">
+
+              الرجاء أختيار الولاية
+
+                        </p>
+          {{ form.state|as_crispy_field }}
+        </div>
+        <div class="col-2">
+
+        </div>
+        <div class="col-5 mt-2 mb-4" id="hquarter">
+          <p class=" text-white bg-primary cb bg-opacity-50  py-1 rounded-pill border-white tsmf px-2 mb-2">
+
+              الرجاء أختيار الأمانة
+
+                        </p>
+          {{ form.hquarter|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5 mt-2 mb-4" id="sector">
+          <p class=" text-white bg-primary cb bg-opacity-50  py-1 rounded-pill border-white tsmf px-2 mb-2">
+
+              الرجاء أختيار القطاع
+
+                        </p>
+          {{ form.sector|as_crispy_field }}
+        </div>
+        <div class="col-2">
+
+        </div>
+        <div class="col-5 mt-2 mb-2" id="name">
+          <p class=" text-white bg-primary cb bg-opacity-50  py-1 rounded-pill border-white tsmf px-2 mb-2">
+
+              الرجاء أدخال المكتب
+
+                        </p>
+          {{ form.name|as_crispy_field }}
+        </div>
+      </div>
+
+      <br />
+
+      <button class="btn btn-save mb-4 smf d-inline-flex align-items-center" type="submit">
+        {{ action }}
+        <span class="px-2"><i class="fa-solid fa-file-circle-plus"></i></span>
+      </button>
+    </form>
+  </div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+  $("#id_state").change(function(){
+    var stateId = $(this).val();
+    $.ajax({
+      url: '{% url 'offices:load_hquarters' %}',
+      data: {
+        'state' : stateId
+      },
+      success: function(data){
+        $("#id_hquarter").html(data)
+      }
+    });
+  });
+
+  $("#id_hquarter").change(function(){
+    var hquarterId = $(this).val();
+    $.ajax({
+      url: '{% url 'offices:load_sectors' %}',
+      data: {
+        'hquarter' : hquarterId
+      },
+      success: function(data){
+        $("#id_sector").html(data)
+      }
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="">
+  <div class="d-flex mt-2  border-bottom">
+    <div class="p-2 flex-grow-1">
+      <span class="px-2 fs-4 text-secondary">
+        <i class="fa-solid fa-house-laptop"></i>
+      </span>
+      <span class="px-2  tth">
+        {{ title }}  /
+      </span>
+      <span class=" tth">
+        {{ header }} /
+      </span>
+      <span></span>
+    </div>
+    <div class="p-2">
+      <span>
+        <a class="text-end tth" href="{% url 'departments:planning_list' %}">
+          القائمة الرئيسية
+          <span class="px-3 fs-4"><i class="fa-solid fa-ellipsis-vertical"></i></span>
+        </a>
+      </span>
+    </div>
+  </div>
+    <div class="mt-2">
+
+    <form class="mt-4 px-3 py-3" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-1">
+
+        </div>
+        <div class="col-4 mt-2 mb-2" id="name">
+          {{ form.name|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1">
+
+        </div>
+        <div class="col-4 mt-2 mb-2" id="state">
+          <!-- <p class=" text-white bg-primary cb bg-opacity-75  py-1 rounded-pill border-white tsmf px-2 mb-2">
+
+              الرجاء أختيار الولاية
+
+                        </p> -->
+          {{ form.state|as_crispy_field }}
+        </div>
+        <div class="col-3">
+
+        </div>
+          <div class="col-4 mt-2 mb-2" id="top_management">
+            <!-- <p class=" text-white bg-primary cb bg-opacity-75  py-1 rounded-pill border-white tsmf px-2 mb-2">
+
+                الرجاء أختيار الادارة العليا
+
+                          </p> -->
+            {{ form.top_management|as_crispy_field }}
+          </div>
+
+
+      </div>
+      <br /><hr /><br />
+      <div class="row">
+        <div class="col-1">
+
+        </div>
+        <div class="col-4">
+          <button class="btn btn-save mb-4 smf d-inline-flex align-items-center" type="submit">
+            {{ action }}
+            <span class="px-3"><i class="fa-solid fa-file-export"></i></span>
+          </button>
+        </div>
+      </div>
+
+    </form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block add %}
+  <a class="border border-primary p-2 rounded-circle" href="{% url 'locations:add_unity' %}">
+    <span class="smf sf-4"><i class="fa-solid fa-plus"></i></span>
+  </a>
+{% endblock %}
+{% block content  %}
+<div class="d-flex mt-2  border-bottom">
+  <div class="p-2 flex-grow-1">
+    <span class="px-2 fs-4 text-secondary">
+      <i class="fa-solid fa-house-laptop"></i>
+    </span>
+    <span class="px-2  tth">
+      {{ title }}  /
+    </span>
+    <span class=" tth">
+      {{ header }} /
+    </span>
+    <span></span>
+  </div>
+  <div class="p-2">
+    <span>
+      <a class="text-end tth" href="{% url 'locations:add_unity' %}">
+        جديد
+        <span class="px-3 smf fs-6"><i class="fa-solid fa-file-circle-plus"></i></span>
+      </a>
+    </span>
+  </div>
+</div>
+<br />
+<form  class="mt-4 method="get" action="{% url 'locations:search_unity' %}">
+  <div class="row">
+    <div class="col-6">
+      <input class="form-control border-warning col-6 smf py-1" type="text" name="q" placeholder="أدخل الوحدة الإدارية للبحث" />
+    </div>
+    <div class="col-2">
+      <button type="submit" class="btn btn-warning px-2 col-6 smf py-1">
+          <span class="text-primary smf sf-2"><i class="fa-solid fa-search"></i></span>
+      </button>
+    </div>
+  </div>
+</form>
+
+      {% if unities %}
+
+        <div class="mt-4">
+
+          <table class="table">
+            <thead>
+              <tr class="text-center table-secondary bg-opacity-10">
+                <th>#</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+          {% for un in unities %}
+            <tr class="text-center fnt">
+              <td><span class="smf text-secondary">{{ un.id }}</span></td>
+              <td><span class="smf text-secondary">{{ un.name }}</span></td>
+              <td class="smf text-secondary">
+                <a class="" href="{% url 'locations:update_unity' un.id %}">
+                  <span class="smf sf-4"><i class="fa-solid fa-pencil"></i></span>
+                </a>
+              </td>
+              <td class="">
+                <a class="smf text-danger" href="{% url 'locations:delete_unity' un.id %}">
+                   <span class="smf fs-6"><i class="fa-solid fa-text-slash"></i></span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if is_paginated %}
+          {% include 'snippets/paginate.html' %}
+      {% endif %}
+  </div>
+      </div>
+{% endif %}
+{% endblock %}

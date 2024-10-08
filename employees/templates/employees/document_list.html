@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content  %}
+
+<div class="d-flex mt-2  border-bottom">
+  <div class="p-2 flex-grow-1">
+    <span class="px-2 fs-4 text-secondary">
+      <i class="bi bi-houses"></i>
+    </span>
+    <span class="px-2  tth">
+      {{ title }}  /
+    </span>
+    <span class=" tth">
+      {{ header }} /
+    </span>
+    <span></span>
+  </div>
+  <div class="p-2">
+    <span>
+      <a class="text-end tth" href="{% url 'employees:create_document' %}">
+        إضافة مستند
+        <span class="px-3 fs-4"><i class="bi bi-patch-plus"></i></span>
+      </a>
+    </span>
+  </div>
+</div>
+    <br />
+    <br />
+      {% if documents %}
+        <div class="mt-4">
+
+          <table class="table">
+            <thead>
+              <tr class="text-center table-success bg-opacity-10">
+                <th>#</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+          {% for b in documents %}
+            <tr class="text-center fnt">
+              <td><span class="smf text-secondary">{{ b.id }}</span></td>
+              <td><span class="smf text-secondary">{{ b.code }}</span></td>
+              <td class="border-start">
+                <a class="smf text-secondary" href="">
+                  <span class="fs-6"><i class="fa-solid fa-file-pen"></i></span>
+                </a>
+              </td>
+              <td class="border-start">
+                <a class="smf text-danger" href="">
+                  <span class="fs-6"><i class="fa-solid fa-text-slash"></i></span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if is_paginated %}
+          {% include 'snippets/paginate.html' %}
+      {% endif %}
+  </div>
+{% endif %}
+{% endblock %}

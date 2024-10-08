@@ -1,0 +1,14 @@
+body {
+  
+}
+.hdr {
+  font-family: "Beiruti", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: bold;
+   font-style: normal;
+   font-size: 24px;
+   color: #666699;
+}
+.sfm {
+  font-size: 12px;
+}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block add %}
+  <a class="border border-primary p-2 rounded-circle" href="{% url 'departments:department_list' %}">
+    <span class="smf sf-4"><i class="fa-solid fa-list"></i></span>
+  </a>
+{% endblock %}
+{% block content %}
+<div class="p-4">
+  <div class="d-flex mt-2 border-bottom">
+    <div class="flex-grow-1">
+      <span class="fs-4 text-secondary">
+        <i class="fa-solid fa-house-laptop"></i>
+      </span>
+      <span class="px-2 tth">
+        {{ title }}
+      </span>
+      <span class="px-2 tth">
+        {{ header }}
+      </span>
+    </div>
+    <div class="p-2">
+      <span>
+        <a class="tth" href="{% url 'departments:department_list' %}">
+          القائمة الرئيسية
+          <span class="px-3 fs-6"><i class="fa-solid fa-list"></i></span>
+        </a>
+      </span>
+    </div>
+  </div>
+    <div class="mt-2">
+    <div class="px-4 mt-4">
+      <p class="fw-bold text-warning fs-6 border-bottom">
+        الرجاء ملء البيانات     .... ?
+      </p>
+    </div>
+    <form class=" px-3 py-3" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-6  mb-3" id="name">
+          {{ form.name|as_crispy_field }}
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-6  mb-3" id="management">
+          <p class="text-white bg-primary cb bg-opacity-75 py-1 rounded-pill border-white tsmf px-2 mb-2">
+            إختيار الإدارة العليا
+          </p>
+          {{ form.management|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6  mb-3" id="min_dgree">
+          <p class="text-white bg-primary cb bg-opacity-75 py-1 rounded-pill border-white tsmf px-2 mb-2">
+            إختيار الدرجة
+          </p>
+          {{ form.min_dgree|as_crispy_field }}
+        </div>
+      </div>
+      <hr>
+      <div class="">
+        <button class="btn  btn-save mb-4 smf d-inline-flex align-items-center" type="submit">
+          {{ action }}
+          <span class="px-3"><i class="fa-solid fa-circle-plus"></i></span>
+        </button>
+      </div>
+      <br><br>
+
+    </form>
+</div>
+</div>
+{% endblock %}

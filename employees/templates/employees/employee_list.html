@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content  %}
+
+<div class="d-flex border-bottom">
+  <div class="p-2 flex-grow-1">
+    <span class="px-2 fs-4 text-secondary">
+      <i class="fa-solid fa-users"></i>
+    </span>
+    <span class="px-2  tth">
+      {{ title }}  /
+    </span>
+    <span class=" tth">
+      {{ header }} /
+    </span>
+    <span></span>
+  </div>
+  <div class="p-2">
+    <span>
+      <a class="text-end tth" href="{% url 'employees:add_employee' %}">
+        إضافة موظف جديد
+        <span class="px-3 fs-4"><i class="fa-solid fa-person-circle-plus"></i></span>
+      </a>
+    </span>
+  </div>
+</div>
+<br />
+<form  class="mt-2 method="get" action="{% url 'employees:search_employee' %}">
+  <div class="row">
+    <div class="col-6">
+      <input class="form-control border-secondary col-6 smf py-1 rounded-0 border-0 border-bottom" type="text" name="q" placeholder="أدخل الموظف للبحث" />
+    </div>
+    <div class="col-2">
+      <button type="submit" class="btn btn-secondary  px-2 col-6 smf py-1">
+          <span class="text-white smf sf-2"><i class="fa-solid fa-search"></i></span>
+      </button>
+    </div>
+  </div>
+</form>
+<br />
+
+      {% if employees %}
+        <div class="mt-4">
+
+          <table class="table">
+            <thead>
+              <tr class="text-center table-secondary bg-opacity-10">
+                <th class="text-primary fw-bold">#</th>
+                <th class="text-primary fw-bold">الرقم الوظيفى</th>
+                <th class="text-primary fw-bold">الإسم</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+          {% for em in employees %}
+            <tr class="text-center fnt">
+              <td><span class="smf text-secondary">{{ em.id }}</span></td>
+              <td><span class="smf text-secondary">{{ em.idn }}</span></td>
+              <td><span class="smf text-secondary">{{ em.name }}</span></td>
+              <td class="border-start">
+                <a class="smf text-secondary" href="{% url 'employees:update_employee' em.id %}">
+                  <span class="fs-6"><i class="fa-solid fa-file-pen"></i></span>
+                </a>
+              </td>
+              <td class="border-start">
+                <a class="smf text-danger" href="{% url 'employees:delete_employee' em.id %}">
+                  <span class="fs-6"><i class="fa-solid fa-text-slash"></i></span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if is_paginated %}
+          {% include 'snippets/paginate.html' %}
+      {% endif %}
+  </div>
+</div>
+{% endif %}
+{% endblock %}

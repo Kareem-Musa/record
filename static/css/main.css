@@ -1,0 +1,128 @@
+body {
+
+  font-family: "Noto Naskh Arabic", serif;
+  font-family: "Jersey 15", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 12px;
+  height: 100%;
+  margin: 0;
+  background: #fff;
+  color: gray;
+  color: #666699;
+}
+.fnt {
+  font-size: 12px;
+}
+.thdr {
+  /* font-family: 'Aref Ruqaa', serif; */
+  font-family: "Blaka Ink", system-ui;
+  font-family: 'Almarai', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.smf {
+  font-size: 12px;
+}
+#hdr {
+  background:  #0072b0;
+}
+.cntl {
+  background: #f1f1f1;
+}
+.sf {
+  font-family: Lateef;
+}
+.mfnt {
+  font-size: 14px;
+}
+.horz {
+  height: 100%;
+  background-color: #EBEcF0;
+}
+.sfnt {
+  font-size: 14px;
+}
+.tth {
+
+font-family: "Scheherazade New", serif;
+font-family: "Victor Mono";
+font-family: 'Blaka Ink', system-ui;
+font-family: 'Blaka Hollow', system-ui;
+font-family: 'Almarai', sans-serif;
+font-family: "Droid Arabic Kufi";
+font-size: 12px;
+color: #50623A;
+color: #2D3250;
+color: #2D9596;
+color: #C69774;
+color: #666699;
+color: #164863;
+color: #1F1717;
+color: #BBAB8C;
+color: #76453B;
+
+font-weight: lighter;
+font-weight: bold;
+}
+.mn {
+  font-size: 14px;
+}
+.cb {
+  display: inline-block;
+}
+#ftr {
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   height: 60px;   /* Height of the footer */
+
+}
+.tsmf {
+  font-size: 10px;
+}
+a {
+  text-decoration: none;
+}
+.cbtn {
+  background: rgb(194, 231, 255);
+  background-color: rgb(0, 74, 119);
+  border-radius: 20px;
+}
+.btn-login {
+  background-color: #C69774;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #f1f1f1;
+  font-weight: bolder;
+  padding-right: 20px;
+}
+.btn-register {
+  background-color: #164863;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #f1f1f1;
+  font-weight: bolder;
+  padding-right: 20px;
+}
+.btn-save {
+  background-color: #004a77ff;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #f1f1f1;
+  padding-right: 20px;
+}
+.btn-remove {
+  background-color: #8C2B32;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #f1f1f1;
+  padding-right: 20px;
+}
+.btn-back {
+  background-color: #6F5D44;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #f1f1f1;
+  padding-right: 20px;
+}

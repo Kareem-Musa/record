@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="border mt-4 ">
+  <div class="d-flex mt-2  border-bottom">
+    <div class="p-2 flex-grow-1">
+      <span class="px-2 text-secondary">
+        <i class="fa-solid fa-house"></i>
+      </span>
+      <span class="px-2 fw-bold text-primary">
+        {{ title }}  /
+      </span>
+      <span class="fw-bold text-primary">
+        {{ header }} /
+      </span>
+      <span></span>
+    </div>
+    <div class="p-2">
+      <span>
+        <a class="text-end" href="{% url 'locations:state_list' %}">
+          Go to List
+          <span class="px-3"><i class="fa-solid fa-bars"></i></span>
+        </a>
+      </span>
+    </div>
+  </div>
+    <div class="mt-4">
+      <br />
+    <span class="text-danger border-bottom px-3 fw-bold fnt">هل تريد حذف ولاية  - {{ state }}</span>
+    <form class=" px-3 mt-2 py-3 col-6" method="post">
+      {% csrf_token %}
+
+      <hr /><br />
+      <div class="d-flex">
+      <div class="flex-grow-1">
+      <button class="btn btn-outline-danger btn-sm fnt" type="submit">
+        {{ action }}
+        <span class="px-2"><i class="fa-solid fa-arrow-left"></i></span>
+      </button>
+      </div>
+      <div class="">
+        <a class="btn btn-outline-secondary btn-sm fnt" href="{% url 'locations:state_list' %}">
+          Go Back
+          <span class="px-3"><i class="fa-solid fa-arrow-rotate-left"></i></span>
+        </a>
+      </div>
+    </form>
+</div>
+</div>
+{% endblock %}

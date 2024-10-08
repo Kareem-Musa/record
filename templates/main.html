@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/bs/bootstrap.rtl.min.css' %}" rel="stylesheet">
+    <link href="{% static 'fa/css/all.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/master.css' %}" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="bg-light">
+<div class="mt-4">
+<div class="row">
+ {% include 'snippets/mheader.html' %}
+</div>
+</div>
+</body>
+</html>

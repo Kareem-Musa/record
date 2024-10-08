@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="">
+    <br /><br />
+
+    <form class="px-5" method="POST">
+      {% csrf_token %}
+      <div class="col-6 mt-4 mb-3" id="username">
+        {{ form.username|as_crispy_field }}
+      </div>
+      <div class="col-6 mt-4 mb-3" id="password">
+        {{ form.password|as_crispy_field }}
+      </div>
+
+      <br />
+
+      <button class="btn btn-login mb-4  d-inline-flex align-items-center" type="submit">
+        {{ action }}
+        <span class="px-4"><i class="fa-solid fa-right-to-bracket"></i></span>
+      </button>
+      <div class="col-6">
+        <hr />
+      <a href="{% url 'account:register' %}" class="text-primary">للتسجيل هنا</a>
+      </div>
+      <br><br>
+    </form>
+  </div>
+{% endblock %}
